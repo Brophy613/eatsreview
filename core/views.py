@@ -28,6 +28,12 @@ class QuestionListView(ListView):
     template_name = "question/question_list.html"
     paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+      context = super(QuestionListView, self).get_context_data(**kwargs)
+      user_votes = Question.objects.filter(vote__user=self.request.user)
+      context['user_votes'] = user_votes
+      return context
+
 class QuestionDetailView(DetailView):
     model = Question
     template_name = 'question/question_detail.html'
