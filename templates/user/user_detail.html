@@ -7,6 +7,7 @@
 {% if user_in_view == user %}
 <p><a href="{% url 'user_update' slug=user.username %}">Edit profile</a></p>
 {% endif %}
+<p><a href="{% url 'user_delete' slug=user.username %}">Delete account</a></p>
 <h3>Reviews ({{ questions.count }})</h3>
 {% for question in questions %}
 <p><a href="{{ question.get_absolute_url }}">{{ question.restaurant }}</a></p>
